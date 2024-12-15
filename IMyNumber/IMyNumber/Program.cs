@@ -89,5 +89,28 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
 
 //---------------------------------------------------------------------------------------------------
 
+public class MyComplex : IMyNumber<MyComplex>
+{
+    private double re; // дійсна частина
+    private double im; // уявна
 
+    //констр. що ініц. комплексне число з дійсною та уявною частиною
+    public MyComplex(double re, double im)
+    {
+        this.re = re;
+        this.im = im;
+    }
+
+    // констр. що парсить комплексне число зі стрінга в re+im
+    public MyComplex(string complex)
+    {
+        var parts = complex.Split('+', '-');
+        if (parts.Length != 2 || !double.TryParse(parts[0], out re) || !double.TryParse(parts[1].Replace("i", ""), out im))
+        {
+            throw new ArgumentException("Некоректний формат комплексного числа.");
+        }
+    }
+
+
+}
 
