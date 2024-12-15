@@ -121,7 +121,20 @@ public class MyComplex : IMyNumber<MyComplex>
     {
         return new MyComplex(re - that.re, im - that.im);
     }
+    // vyj;/ rjvgk/
+    public MyComplex Multiply(MyComplex that)
+    {
+        return new MyComplex(re * that.re - im * that.im, re * that.im + im * that.re);
+    }
 
+    // lsktyyz rjvgk/
+    public MyComplex Divide(MyComplex that)
+    {
+        //C^2+d^2
+        double denominator = that.re * that.re + that.im * that.im;
+        if (denominator == 0) throw new DivideByZeroException("Не можна ділити на нуль");
+        return new MyComplex((re * that.re + im * that.im) / denominator, (im * that.re - re * that.im) / denominator);
+    }
 
 }
 
