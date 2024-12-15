@@ -34,5 +34,16 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         //-a/-b=a/b
         if (denom < 0) { nom = -nom; denom = -denom; }
     }
+    //констр. парсить дріб зі стрінга у numerator/denominator
+    public MyFrac(string fraction)
+    {
+        var parts = fraction.Split('/');
+        if (parts.Length != 2 || !BigInteger.TryParse(parts[0], out nom) || !BigInteger.TryParse(parts[1], out denom))
+        {
+            throw new ArgumentException("Некоректний формат дробу.");
+        }
+        if (denom == 0) throw new DivideByZeroException("Знаменник не може бути нулем.");
+        Simplify();
+    }
 }
 
