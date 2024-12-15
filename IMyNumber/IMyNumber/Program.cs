@@ -176,6 +176,16 @@ Console.WriteLine("2*a*b = " + curr);
         TestSquaresDifference(new MyFrac(1, 3), new MyFrac(1, 6));
         TestSquaresDifference(new MyComplex(1, 3), new MyComplex(1, 6));
 
+        //тест сортування
+        var fractions = new List<MyFrac>
+        {
+            new MyFrac(1, 2),
+            new MyFrac(1, 3),
+            new MyFrac(2, 3)
+        };
+        fractions.Sort();
+        Console.WriteLine("Sorted fractions: " + string.Join(", ", fractions) );
+
         Console.ReadKey();
     }
     static void TestSquaresDifference<T>(T a, T b) where T : IMyNumber<T>
