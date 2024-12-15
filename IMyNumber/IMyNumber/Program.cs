@@ -159,8 +159,7 @@ class Program
         curr = a.Multiply(b); // ab
         curr = curr.Add(curr); // ab + ab = 2ab
         
-// I'm not sure how to create constant factor "2" in more elegant way,
-// without knowing how IMyNumber is implemented
+
 Console.WriteLine("2*a*b = " + curr);
         wholeRightPart = wholeRightPart.Add(curr);
         curr = b.Multiply(b);
@@ -173,7 +172,32 @@ Console.WriteLine("2*a*b = " + curr);
     {
         TestAPlusBSquare(new MyFrac(1, 3), new MyFrac(1, 6));
         TestAPlusBSquare(new MyComplex(1, 3), new MyComplex(1, 6));
+
+        TestSquaresDifference(new MyFrac(1, 3), new MyFrac(1, 6));
+        TestSquaresDifference(new MyComplex(1, 3), new MyComplex(1, 6));
+
         Console.ReadKey();
+    }
+    static void TestSquaresDifference<T>(T a, T b) where T : IMyNumber<T>
+    {
+        Console.WriteLine($"=== Starting tеsting (a-b) and (a^2-b^2)/(a+b) with a = {a}, b = {b} ===");
+        T aMinusB = a.Subtract(b);
+        T aSquared = a.Multiply(a);
+        T bSquared = b.Multiply(b);
+        T denominator = a.Add(b);
+
+        try
+        {
+            T resultDivision = aSquared.Subtract(bSquared).Divide(denominator);
+            Console.WriteLine($"a-b = {aMinusB}");
+            Console.WriteLine($"(a^2-b^2)/(a+b) = {resultDivision}");
+        }
+        catch (DivideByZeroException e)
+        {
+            Console.WriteLine($"Error: {e.Message}");
+        }
+
+        Console.WriteLine($"=== Finishing tеsting (a-b) and (a^2-b^2)/(a+b) with a = {a}, b = {b} ===");
     }
 }
 
