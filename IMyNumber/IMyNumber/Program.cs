@@ -135,6 +135,9 @@ public class MyComplex : IMyNumber<MyComplex>
         if (denominator == 0) throw new DivideByZeroException("Не можна ділити на нуль");
         return new MyComplex((re * that.re + im * that.im) / denominator, (im * that.re - re * that.im) / denominator);
     }
-
+    public override string ToString()
+    {
+        return $"{re}+{im}i";
+    }
 }
 
