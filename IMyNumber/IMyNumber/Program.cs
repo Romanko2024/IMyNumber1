@@ -55,6 +55,19 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
     {
         return new MyFrac(nom * that.denom - denom * that.nom, denom * that.denom);
     }
+    // множення дробів
+    public MyFrac Multiply(MyFrac that)
+    {
+        return new MyFrac(nom * that.nom, denom * that.denom);
+    }
+
+    //ділення дробів
+    public MyFrac Divide(MyFrac that)
+    {
+        if (that.nom == 0) throw new DivideByZeroException("Не можна ділити на нуль");
+        return new MyFrac(nom * that.denom, denom * that.nom);
+    }
+
 
 }
 
