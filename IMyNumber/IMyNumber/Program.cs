@@ -45,5 +45,16 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         if (denom == 0) throw new DivideByZeroException("Знаменник не може бути нулем.");
         Simplify();
     }
+    //додавання дво дробів 
+    public MyFrac Add(MyFrac that)
+    {
+        return new MyFrac(nom * that.denom + denom * that.nom, denom * that.denom);
+    }
+    // віднімання одного дроба від іншого
+    public MyFrac Subtract(MyFrac that)
+    {
+        return new MyFrac(nom * that.denom - denom * that.nom, denom * that.denom);
+    }
+
 }
 
