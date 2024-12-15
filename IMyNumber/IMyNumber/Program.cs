@@ -111,6 +111,17 @@ public class MyComplex : IMyNumber<MyComplex>
         }
     }
 
+    // додавання компл
+    public MyComplex Add(MyComplex that)
+    {
+        return new MyComplex(re + that.re, im + that.im);
+    }
+    //віднімання компл,
+    public MyComplex Subtract(MyComplex that)
+    {
+        return new MyComplex(re - that.re, im - that.im);
+    }
+
 
 }
 
