@@ -25,6 +25,7 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
 
         Simplify(); 
     }
+
     //ділить чисельник знаменник на їх НСД
     private void Simplify()
     {
@@ -35,6 +36,7 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         if (denom < 0) { nom = -nom; denom = -denom; }
     }
     //констр. парсить дріб зі стрінга у numerator/denominator
+
     public MyFrac(string fraction)
     {
         var parts = fraction.Split('/');
@@ -45,6 +47,7 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         if (denom == 0) throw new DivideByZeroException("Знаменник не може бути нулем.");
         Simplify();
     }
+
     //додавання дво дробів 
     public MyFrac Add(MyFrac that)
     {
@@ -60,14 +63,21 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
     {
         return new MyFrac(nom * that.nom, denom * that.denom);
     }
-
-    //ділення дробів
+        //ділення дробів
     public MyFrac Divide(MyFrac that)
     {
         if (that.nom == 0) throw new DivideByZeroException("Не можна ділити на нуль");
         return new MyFrac(nom * that.denom, denom * that.nom);
     }
 
-
+    //вивід результату    
+    public override string ToString()
+    {
+        return $"{nom}/{denom}";
+    }
 }
+
+//---------------------------------------------------------------------------------------------------
+
+
 
