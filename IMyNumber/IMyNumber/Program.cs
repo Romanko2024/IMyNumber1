@@ -70,6 +70,16 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         return new MyFrac(nom * that.denom, denom * that.nom);
     }
 
+    //порывняння двох дробів
+    public int CompareTo(MyFrac that)
+    {
+        //чисельник дробу this після множення його чисельника на знаменник дробу that
+        BigInteger left = nom * that.denom;
+        //чисельник дробу that після множення його чисельника на знаменник дробу this
+        BigInteger right = denom * that.nom;
+        return left.CompareTo(right);
+    }
+
     //вивід результату    
     public override string ToString()
     {
