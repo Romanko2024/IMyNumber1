@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 
 interface IMyNumber<T> where T : IMyNumber<T>
 {
@@ -22,6 +23,16 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         this.nom = nom; 
         this.denom = denom; 
 
-        Simplify(); // треба зробюити цей метод
+        Simplify(); 
+    }
+    //ділить чисельник знаменник на їх НСД
+    private void Simplify()
+    {
+        var gcd = BigInteger.GreatestCommonDivisor(nom, denom);
+        nom /= gcd;
+        denom /= gcd;
+        //-a/-b=a/b
+        if (denom < 0) { nom = -nom; denom = -denom; }
     }
 }
+
