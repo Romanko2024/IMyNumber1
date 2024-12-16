@@ -36,7 +36,6 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
         if (denom < 0) { nom = -nom; denom = -denom; }
     }
     //констр. парсить дріб зі стрінга у numerator/denominator
-
     public MyFrac(string fraction)
     {
         var parts = fraction.Split('/');
@@ -63,14 +62,14 @@ public class MyFrac : IMyNumber<MyFrac>, IComparable<MyFrac>
     {
         return new MyFrac(nom * that.nom, denom * that.denom);
     }
-        //ділення дробів
+    //ділення дробів
     public MyFrac Divide(MyFrac that)
     {
         if (that.nom == 0) throw new DivideByZeroException("Не можна ділити на нуль");
         return new MyFrac(nom * that.denom, denom * that.nom);
     }
 
-    //порывняння двох дробів
+    //порівняння двох дробів
     public int CompareTo(MyFrac that)
     {
         //чисельник дробу this після множення його чисельника на знаменник дробу that
@@ -116,18 +115,18 @@ public class MyComplex : IMyNumber<MyComplex>
     {
         return new MyComplex(re + that.re, im + that.im);
     }
-    //віднімання компл,
+    //віднімання компл
     public MyComplex Subtract(MyComplex that)
     {
         return new MyComplex(re - that.re, im - that.im);
     }
-    // vyj;/ rjvgk/
+    //множення компл
     public MyComplex Multiply(MyComplex that)
     {
         return new MyComplex(re * that.re - im * that.im, re * that.im + im * that.re);
     }
 
-    // lsktyyz rjvgk/
+    //ділення компл
     public MyComplex Divide(MyComplex that)
     {
         //C^2+d^2

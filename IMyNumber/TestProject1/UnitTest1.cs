@@ -93,7 +93,7 @@ namespace TestProject1
             var complex1 = new MyComplex(1, 2);
             var complex2 = new MyComplex(3, 4);
             var result = complex1.Divide(complex2);
-            Assert.Equal("0.44+0.08i", result.ToString());
+            Assert.Equal("0,44+0,08i", result.ToString());
         }
         [Fact]
         public void Complex_Divide_ByZero_ThrowException()
