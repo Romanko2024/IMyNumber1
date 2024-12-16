@@ -63,6 +63,44 @@ namespace TestProject1
             var complex = new MyComplex(3, 4);
             Assert.Equal("3+4i", complex.ToString());
         }
-
+        [Fact]
+        public void ComplexCorrectSum()
+        {
+            var complex1 = new MyComplex(1, 2);
+            var complex2 = new MyComplex(3, 4);
+            var result = complex1.Add(complex2);
+            Assert.Equal("4+6i", result.ToString());
+        }
+        [Fact]
+        public void ComplexCorrectDifference()
+        {
+            var complex1 = new MyComplex(5, 6);
+            var complex2 = new MyComplex(3, 4);
+            var result = complex1.Subtract(complex2);
+            Assert.Equal("2+2i", result.ToString());
+        }
+        [Fact]
+        public void ComplexCorrectProduct()
+        {
+            var complex1 = new MyComplex(1, 2);
+            var complex2 = new MyComplex(3, 4);
+            var result = complex1.Multiply(complex2);
+            Assert.Equal("-5+10i", result.ToString());
+        }
+        [Fact]
+        public void ComplexCorrectQuotient()
+        {
+            var complex1 = new MyComplex(1, 2);
+            var complex2 = new MyComplex(3, 4);
+            var result = complex1.Divide(complex2);
+            Assert.Equal("0.44+0.08i", result.ToString());
+        }
+        [Fact]
+        public void Complex_Divide_ByZero_ThrowException()
+        {
+            var complex1 = new MyComplex(1, 2);
+            var complex2 = new MyComplex(0, 0);
+            Assert.Throws<DivideByZeroException>(() => complex1.Divide(complex2));
+        }
     }
 }
