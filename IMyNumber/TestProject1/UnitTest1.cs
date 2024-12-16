@@ -32,7 +32,6 @@ namespace TestProject1
             var result = frac1.Multiply(frac2);
             Assert.Equal("1/18", result.ToString());
         }
-
         [Fact]
         public void CorrectQuotient()
         {
@@ -41,5 +40,21 @@ namespace TestProject1
             var result = frac1.Divide(frac2);
             Assert.Equal("2/1", result.ToString());
         }
+        [Fact]
+        public void Divide_ByZero_Exception()
+        {
+            var frac1 = new MyFrac(1, 3);
+            var frac2 = new MyFrac(0, 1);
+            Assert.Throws<DivideByZeroException>(() => frac1.Divide(frac2));
+        }
+        [Fact]
+        public void CorrectCompareTo()
+        {
+            var frac1 = new MyFrac(1, 2);
+            var frac2 = new MyFrac(1, 3);
+            Assert.True(frac1.CompareTo(frac2) > 0);
+        }
     }
+
+}
 }
