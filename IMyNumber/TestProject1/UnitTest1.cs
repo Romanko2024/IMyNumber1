@@ -55,6 +55,14 @@ namespace TestProject1
             Assert.True(frac1.CompareTo(frac2) > 0);
         }
     }
+    public class MyComplexTests
+    {
+        [Fact]
+        public void ShouldInitializeCorrectly()
+        {
+            var complex = new MyComplex(3, 4);
+            Assert.Equal("3+4i", complex.ToString());
+        }
 
-}
+    }
 }
